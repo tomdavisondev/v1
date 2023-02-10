@@ -3,6 +3,7 @@ date: '1'
 title: 'Easy Test'
 cover: './EasyTest.png'
 github: 'https://github.com/tomdavisondev/EasyTest'
+demo: 'easytest.tomdavisondev.com'
 external: ''
 tech:
   - MongoDB

@@ -13,6 +13,7 @@ import "slick-carousel/slick/slick-theme.css";
 
 const StyledJobsSection = styled.section`
   max-width: 900px;
+  max-height:900px;
 
   .inner {
     display: flex;
@@ -20,18 +21,25 @@ const StyledJobsSection = styled.section`
   }
 
 
-    .project-links{
-      color: transparent;
+  &:before,
+  .project-title {
+    transition: var(--transition);
+    color: var(--white);
+  }
+  .project-links {
+    transition: var(--transition);
+    color: var(--white);
+  }
+  .project-description {
+    transition: var(--transition);
+    color: var(--white);
+  }
+  .project-tech-list {
+    li{
+      transition: var(--transition);
+      color: var(--lightest-green);
     }
-
-    .project-description {
-      color: transparent;
-    }
-    .project-tech-list {
-      li{
-        color: transparent;
-      }
-    }
+  }
 
     &:hover,
       &:focus {
@@ -40,26 +48,6 @@ const StyledJobsSection = styled.section`
         .img {
           background: transparent;
           filter: none;
-        }
-      }
-
-      &:before,
-      .project-title {
-        transition: var(--transition);
-        color: var(--white);
-      }
-      .project-links {
-        transition: var(--transition);
-        color: var(--white);
-      }
-      .project-description {
-        transition: var(--transition);
-        color: var(--white);
-      }
-      .project-tech-list {
-        li{
-          transition: var(--transition);
-          color: var(--lightest-green);
         }
       }
     }
@@ -111,7 +99,6 @@ const StyledJobsSection = styled.section`
     flex-wrap: nowrap;
     justify-content: space-between;
 
-    max-width: 50px;
     max-height: 50px;
   }
 
@@ -146,6 +133,12 @@ const StyledJobsSection = styled.section`
       filter: grayscale(100%) contrast(1) brightness(80%);
     }
   }
+  .demo-link {
+    ${({ theme }) => theme.mixins.bigVibrantButton};
+    margin: auto;
+    width: 50%;
+    padding: 10px;
+  }
 `;
 
 const StyledProjectCarousel = styled.ul`
@@ -155,9 +148,9 @@ const StyledProjectCarousel = styled.ul`
   align-items: center;
 
   .project-links {
-      justify-content: flex-end;
-      margin-left: 0;
-      margin-right: -10px;
+      justify-content: flex-start;
+      margin-left: 0px;
+      margin-right: 50px;
 
       @media (max-width: 768px) {
         justify-content: flex-start;
@@ -192,6 +185,7 @@ const Featured = () => {
               }
               tech
               github
+              demo
               external
             }
             html
@@ -236,7 +230,7 @@ const Featured = () => {
       {featuredProjects &&
           featuredProjects.map(({ node }, i) => {
             const { frontmatter, html } = node;
-            const { external, title, tech, github, cover, cta } = frontmatter;
+            const { external, title, tech, github, demo, cover, cta } = frontmatter;
             const image = getImage(cover);
 
             return (
@@ -271,6 +265,11 @@ const Featured = () => {
                       {github && (
                         <a href={github} aria-label="GitHub Link">
                           <Icon name="GitHub" />
+                        </a>
+                      )}
+                      {demo && (
+                        <a href={demo} aria-label="Demo Link" className="demo-link">
+                          Demo
                         </a>
                       )}
                       {external && !cta && (

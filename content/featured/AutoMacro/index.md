@@ -3,6 +3,7 @@ date: '2'
 title: 'AutoMacro'
 cover: './demo.png'
 github: 'https://github.com/tomdavisondev/Auto-Macro'
+demo: ''
 external: ''
 tech:
   - C#
