@@ -268,7 +268,7 @@ const Featured = () => {
                         </a>
                       )}
                       {demo && (
-                        <a href={demo} aria-label="Demo Link" className="demo-link">
+                        <a href={demo} aria-label="Demo Link" className="demo-link" target="_blank">
                           Demo
                         </a>
                       )}
