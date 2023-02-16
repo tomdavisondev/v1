@@ -6,7 +6,6 @@ import sr from '@utils/sr';
 import { srConfig } from '@config';
 import { Icon } from '@components/icons';
 import { usePrefersReducedMotion } from '@hooks';
-import ReactDOM from "react-dom";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -198,7 +197,6 @@ const Featured = () => {
   const featuredProjects = data.featured.edges.filter(({ node }) => node);
   const revealSlider = useRef(null);
   const revealTitle = useRef(null);
-  const revealProjects = useRef([]);
   const prefersReducedMotion = usePrefersReducedMotion();
 
   useEffect(() => {
@@ -234,7 +232,7 @@ const Featured = () => {
             const image = getImage(cover);
 
             return (
-                <div className="project-content">
+                <div className="project-content" key={i}>
                   <div className="project-image">
                     <a href={external ? external : github ? github : '#'}>
                       <GatsbyImage image={image} alt={title} className="img"/>
@@ -251,9 +249,9 @@ const Featured = () => {
 
                   {tech.length && (
                     <ul className="project-tech-list">
-                      {tech.map((tech, i) => (
-                        <li key={i}>{tech}</li>
-                      ))}
+                    {tech.map((tech, i) => (
+                      <li key={`tech-${i}`}>{tech}</li>
+                    ))}
                     </ul>
                   )}
                   <div className="project-links">
@@ -267,8 +265,8 @@ const Featured = () => {
                           <Icon name="GitHub" />
                         </a>
                       )}
-                      {demo && (
-                        <a href={demo} aria-label="Demo Link" className="demo-link" target="_blank">
+                      {demo && demo !== "" && (
+                        <a href={demo} aria-label="Demo Link" className="demo-link" target="_blank" rel="noreferrer">
                           Demo
                         </a>
                       )}

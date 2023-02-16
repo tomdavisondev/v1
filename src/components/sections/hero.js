@@ -63,7 +63,7 @@ const Hero = () => {
   const three = (
     <>
       <p>
-        I am a software engineer focused on building and designing utilities and responsive websites. 
+        I am a Software Developer focused on building and designing utilities and responsive websites. 
         Currently, I'm dedicated to working on my own independent projects.
       </p>
     </>

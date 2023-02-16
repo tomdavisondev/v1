@@ -114,7 +114,7 @@ const About = () => {
             </p>
 
             <p>
-              I've had the privilage of working in Qualty Assurance as well as Software development in the biomedical testing space. My focus these days
+              I've had the privilege of working in Quality Assurance as well as Software development in the biomedical testing space. My focus these days
               is building web based platforms, time saving utilities and participating in a game jam here or there.
             </p>
 
